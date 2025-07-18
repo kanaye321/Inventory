@@ -1,0 +1,463 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.75rem;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 84% 4.9%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 94.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-gray-50 text-foreground font-sans;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* Modern Sidebar Styling */
+.sidebar {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-item {
+  @apply relative flex items-center px-4 py-3 mx-2 rounded-xl text-white/80 hover:text-white hover:bg-white/10 transition-all duration-200 cursor-pointer;
+}
+
+.sidebar-item.active {
+  @apply bg-white/20 text-white shadow-lg;
+}
+
+.sidebar-item.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 24px;
+  background: white;
+  border-radius: 0 4px 4px 0;
+}
+
+/* Header Styling */
+.header {
+  @apply bg-white border-b border-gray-200/60 backdrop-blur-md;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* Card Styling */
+.dashboard-card {
+  @apply bg-white rounded-2xl border border-gray-200/60 shadow-sm hover:shadow-md transition-all duration-300;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-2px);
+}
+
+/* Gradient Cards */
+.gradient-card-blue {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  @apply text-white;
+}
+
+.gradient-card-green {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  @apply text-white;
+}
+
+.gradient-card-purple {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  @apply text-white;
+}
+
+.gradient-card-orange {
+  background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+  @apply text-white;
+}
+
+/* Stats Cards */
+.stat-card {
+  @apply relative overflow-hidden bg-white rounded-2xl border border-gray-200/60 p-6 shadow-sm hover:shadow-md transition-all duration-300;
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+}
+
+/* Chart Containers */
+.chart-container {
+  @apply bg-white rounded-2xl border border-gray-200/60 p-6 shadow-sm;
+}
+
+.recharts-wrapper {
+  font-family: inherit;
+}
+
+.recharts-cartesian-axis-tick-value {
+  font-size: 12px;
+  fill: #6B7280;
+}
+
+.recharts-legend-wrapper {
+  font-size: 14px;
+}
+
+/* Welcome Section */
+.welcome-section {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  @apply rounded-2xl border border-gray-200/60 p-8 shadow-sm;
+}
+
+/* Avatar Styling */
+.user-avatar {
+  @apply ring-4 ring-white/50 shadow-lg;
+}
+
+/* Icon Containers */
+.icon-container {
+  @apply w-12 h-12 rounded-xl flex items-center justify-center shadow-sm;
+}
+
+.icon-container-blue {
+  @apply bg-blue-100 text-blue-600;
+}
+
+.icon-container-green {
+  @apply bg-green-100 text-green-600;
+}
+
+.icon-container-orange {
+  @apply bg-orange-100 text-orange-600;
+}
+
+.icon-container-purple {
+  @apply bg-purple-100 text-purple-600;
+}
+
+/* Button Styling */
+.btn-primary {
+  @apply bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200;
+}
+
+.btn-secondary {
+  @apply bg-white text-gray-700 px-6 py-3 rounded-xl border border-gray-200 shadow-sm hover:shadow-md hover:bg-gray-50 transition-all duration-200;
+}
+
+/* Table Styling */
+.data-table {
+  @apply bg-white rounded-2xl border border-gray-200/60 overflow-hidden shadow-sm;
+}
+
+.table-header {
+  @apply bg-gray-50/50 px-6 py-4 border-b border-gray-200/60;
+}
+
+.table-row {
+  @apply px-6 py-4 border-b border-gray-200/30 hover:bg-gray-50/50 transition-colors duration-150;
+}
+
+.table-row:last-child {
+  @apply border-b-0;
+}
+
+/* Form Styling */
+.form-container {
+  @apply bg-white rounded-2xl border border-gray-200/60 p-8 shadow-sm;
+}
+
+.form-input {
+  @apply w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-200;
+}
+
+.form-label {
+  @apply block text-sm font-medium text-gray-700 mb-2;
+}
+
+/* Badge Styling */
+.badge-success {
+  @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800;
+}
+
+.badge-warning {
+  @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800;
+}
+
+.badge-error {
+  @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800;
+}
+
+.badge-info {
+  @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800;
+}
+
+/* Modal Styling */
+.modal-overlay {
+  @apply fixed inset-0 bg-black/50 backdrop-blur-sm z-50;
+}
+
+.modal-content {
+  @apply bg-white rounded-2xl shadow-2xl max-w-lg w-full mx-4;
+}
+
+/* Loading Spinner */
+.loading-spinner {
+  @apply animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600;
+}
+
+/* Scrollbar Styling */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Animation Classes */
+.fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-up {
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .sidebar.open {
+    transform: translateX(0);
+  }
+  
+  .main-content {
+    margin-left: 0;
+  }
+}
+
+/* Layout Fixes */
+.sidebar-container {
+  @apply fixed left-0 top-0 h-full w-64 z-30;
+}
+
+.main-content {
+  @apply ml-64 min-h-screen;
+}
+
+@media (max-width: 1023px) {
+  .main-content {
+    @apply ml-0;
+  }
+}
+
+/* Utility Classes */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.shadow-glow {
+  box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+}
+
+/* Page-specific Styles */
+.dashboard-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6;
+}
+
+.metric-card {
+  @apply bg-white rounded-2xl p-6 shadow-sm border border-gray-200/60 hover:shadow-md transition-all duration-300;
+}
+
+.metric-value {
+  @apply text-3xl font-bold text-gray-900;
+}
+
+.metric-label {
+  @apply text-sm text-gray-600 mt-1;
+}
+
+.metric-change {
+  @apply text-sm font-medium mt-2;
+}
+
+.metric-change.positive {
+  @apply text-green-600;
+}
+
+.metric-change.negative {
+  @apply text-red-600;
+}
+
+/* Activity Feed */
+.activity-item {
+  @apply flex items-start space-x-3 p-4 hover:bg-gray-50/50 rounded-lg transition-colors duration-150;
+}
+
+.activity-icon {
+  @apply w-8 h-8 rounded-full flex items-center justify-center text-sm;
+}
+
+/* Navigation Breadcrumbs */
+.breadcrumb {
+  @apply flex items-center space-x-2 text-sm text-gray-600;
+}
+
+.breadcrumb-item {
+  @apply hover:text-gray-900 transition-colors duration-150;
+}
+
+.breadcrumb-separator {
+  @apply text-gray-400;
+}
+
+/* Status Indicators */
+.status-online {
+  @apply w-2 h-2 bg-green-500 rounded-full;
+}
+
+.status-offline {
+  @apply w-2 h-2 bg-red-500 rounded-full;
+}
+
+.status-idle {
+  @apply w-2 h-2 bg-yellow-500 rounded-full;
+}
+
+/* Progress Bars */
+.progress-bar {
+  @apply w-full bg-gray-200 rounded-full h-2 overflow-hidden;
+}
+
+.progress-fill {
+  @apply h-full bg-gradient-to-r from-blue-500 to-purple-600 rounded-full transition-all duration-300;
+}
+
+/* Tooltip Styling */
+.tooltip {
+  @apply absolute z-50 px-3 py-2 text-sm bg-gray-900 text-white rounded-lg shadow-lg;
+}
+
+/* Print Styles */
+@media print {
+  .sidebar,
+  .header,
+  .no-print {
+    display: none !important;
+  }
+  
+  .main-content {
+    margin-left: 0 !important;
+  }
+  
+  .dashboard-card,
+  .stat-card {
+    break-inside: avoid;
+  }
+}
