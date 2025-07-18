@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SRPH-MIS Windows Static Solution</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1, h2, h3 {
+            color: #2a64b5;
+        }
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .info {
+            background-color: #e1f5fe;
+            border-left: 4px solid #03a9f4;
+            padding: 12px;
+            margin: 15px 0;
+        }
+        .button {
+            display: inline-block;
+            background-color: #2a64b5;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .button:hover {
+            background-color: #1a4b8e;
+        }
+        .folder {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #f5f5f5;
+            border-radius: 4px;
+        }
+        .folder a {
+            color: #2a64b5;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .folder a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>SRPH-MIS Windows Static Solution</h1>
+    
+    <div class="card">
+        <h2>Access Your Application</h2>
+        <p>You can access the SRPH-MIS application by clicking on the links below:</p>
+        
+        <div class="info">
+            <h3>Client Distribution Files</h3>
+            <p>Access the frontend client files:</p>
+            <div class="folder">
+                <a href="./client/dist/index.html">Frontend Client (client/dist/index.html)</a>
+            </div>
+            <div class="folder">
+                <a href="./dist/index.html">Alternative Frontend (dist/index.html)</a>
+            </div>
+        </div>
+        
+        <div class="info">
+            <h3>Public Files</h3>
+            <p>Access the public files:</p>
+            <div class="folder">
+                <a href="./public/index.html">Public Files (public/index.html)</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="card">
+        <h2>Important Information</h2>
+        <p>This is a static HTML file solution that allows browsing the SRPH-MIS application files directly without needing to run the Node.js server.</p>
+        <p>Note that some functionality may be limited when accessing the files directly:</p>
+        <ul>
+            <li>Database operations will not work</li>
+            <li>API endpoints will not be available</li>
+            <li>Authentication may not function properly</li>
+        </ul>
+        <p>This approach is useful when you can't run the Node.js server due to socket binding or other Windows Server limitations.</p>
+    </div>
+    
+    <div class="card">
+        <h2>IIS Configuration</h2>
+        <p>If you want to serve these files through IIS:</p>
+        <ol>
+            <li>Set up an IIS website pointing to the SRPH-MIS root directory</li>
+            <li>Enable directory browsing in IIS</li>
+            <li>Make sure default document includes "index.html"</li>
+            <li>Set appropriate permissions for the IIS_IUSRS account</li>
+        </ol>
+        <p>This will allow accessing the application through IIS without running Node.js.</p>
+    </div>
+</body>
+</html>

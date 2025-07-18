@@ -1,0 +1,40 @@
+SRPH-MIS User Management System - Quick Start
+
+WINDOWS QUICK START:
+1. Extract this ZIP file
+2. Double-click "start-windows-direct.bat"
+3. Wait for "Application started" message
+4. Open browser to: http://localhost:3000
+5. Login with: admin / admin123
+
+USER MANAGEMENT ACCESS:
+- Login as administrator
+- Click "Administration" → "User Management" in sidebar
+- Create users and set permissions
+
+FEATURES INCLUDED:
+✓ Fixed authentication session storage
+✓ User Management with permissions
+✓ Data persistence improvements
+✓ Windows Server compatibility
+✓ VM Inventory enhancements
+✓ Network discovery tools
+✓ Complete asset management
+
+DEFAULT LOGIN:
+Username: admin
+Password: admin123
+
+PORT: 3000
+
+REQUIREMENTS:
+- Node.js 18+ (auto-detected)
+- Windows 10/11 or Server 2019/2022
+- Port 3000 available
+
+TROUBLESHOOTING:
+- If port 3000 is busy: Close other applications using port 3000
+- If dependencies fail: Run "npm install" manually
+- For permission issues: Run as administrator
+
+See README-USER-MANAGEMENT-FIXES.md for complete documentation.
