@@ -1,0 +1,44 @@
+@echo off
+title Fix User Profile Service Failed Logon
+echo ====================================================
+echo   Fixing "User Profile Service Failed the Logon"
+echo ====================================================
+echo.
+
+:: Require admin rights
+net session >nul 2>&1
+if %errorlevel% neq 0 (
+    echo Please run this file as Administrator!
+    pause
+    exit /b
+)
+
+:: Backup the registry keys
+echo Backing up registry keys...
+reg export "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList" "%userprofile%\Desktop\ProfileList_Backup.reg" /y
+
+:: Scan for .bak profiles
+for /f "tokens=*" %%A in ('reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList" ^| findstr ".bak"') do (
+    echo Found a corrupted profile: %%A
+    set "ProfileKey=%%A"
+
+    :: Rename .bak to normal
+    reg copy "%%A" "%%A_Temp" /s /f >nul
+    reg delete "%%A" /f >nul
+    set "CleanKey=!ProfileKey:.bak=!"
+
+    reg copy "%%A_Temp" "!CleanKey!" /s /f >nul
+    reg delete "%%A_Temp" /f >nul
+
+    :: Fix State and RefCount values
+    reg add "!CleanKey!" /v State /t REG_DWORD /d 0 /f >nul
+    reg add "!CleanKey!" /v RefCount /t REG_DWORD /d 0 /f >nul
+
+    echo Fixed profile: !CleanKey!
+)
+
+echo.
+echo ====================================================
+echo   Done! Restart your computer and try logging in.
+echo ====================================================
+pause
